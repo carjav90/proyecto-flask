@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block title %}
+Editar Informacion
+{% endblock %}
+{% block content %}
+        <h1>Editar Datos</h1>
+        {% for row in rows%}
+            <form action="{{ url_for('editrec') }}" method="POST">
+                <h3 style = "color:blue">ID: {{ row['id']}}</h3>
+                <input type ="hidden" name ="id" value ="{{ row['id'] }}">
+                Correo Electrónico<br>
+                <input type="text" name="ce" value="{{ row['correo'] }}"/><br>
+                Nombre<br>
+                <input type="text" name="nm" value="{{ row['nombre'] }}"/><br>
+                Apellidos<br>
+                <input type="text" name="ap" value="{{row['apellidos'] }}"/><br>
+                Contraseña<br>
+                <input type="text" name="psw" value="{{ row['contraseña'] }}"/><br>
+                Telefóno<br>
+                <input type="text" name="tlf" value="{{ row['telefono'] }}"/><br>
+                Edad<br>
+               <input type="number" name="ed" value="{{ row['edad'] }}"/><br>
+            
+               <input type="submit" value="Editar" /><br>
+           </form>
+        {% endfor %}
+{% endblock %}

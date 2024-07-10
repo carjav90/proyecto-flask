@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block title %}
+Añadir Datos
+{% endblock %}
+{% block content %}
+        <form action="{{ url_for('insertar_datos')}}" method="POST">
+            <h3> Añade Datos:</h3>
+            Correo Electrónico<br>
+            <input type="text" name="ce" /><br> 
+            Nombre<br>
+            <input type="text" name="nm" /><br>
+            Apellidos<br>
+            <input type="text" name="ap" /><br>
+            Contraseña<br>
+            <input type="text" name="psw" /><br>
+            Telefóno<br>
+            <input type="text" name="tlf" /><br>
+            Edad<br>
+            <input type="integer" name="ed" /><br>
+
+            <input type="submit" name="Submit" /><br>
+        </form>
+{% endblock %}    

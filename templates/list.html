@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block title %}
+Informacion
+{% endblock %}
+{% block content %}
+        <table border ="1px">
+            <thead>
+                <td><strong>ID</strong></td>
+                <td><strong>Correo Electrónico</strong></td>
+                <td><strong>Nombre</strong></td>
+                <td><strong>Apellidos</strong></td>
+                <td><strong>Contraseña</strong></td>
+                <td><strong>Teléfono</strong></td>
+                <td><strong>Edad</strong></td>
+                <td></td>
+                <td></td>
+            </thead>
+
+            {% for row in rows %}
+            <tr>
+                <td>{{ row["id"] }}</td>
+                <td>{{ row["correo"] }}</td>
+                <td>{{ row["nombre"] }}</td>
+                <td>{{ row["apellidos"] }}</td>
+                <td>{{ row["contraseña"] }}</td>
+                <td>{{ row["telefono"] }}</td>
+                <td>{{ row["edad"] }}</td>
+                <td><form action ="{{ url_for('edit')}}" method="POST"><input type="hidden" name ="id" value="{{row['id']}}"><input type="submit" value ="Editar"></form> </td>
+                <td><form onsubmit ="return confirm('¿Estas seguro que quieres borrar los datos seleccionados?');" action="{{url_for('delete', id=row['id'])}}" method="POST"><input type = "hidden" name ="id" value ="{{ row['id'] }}"><input type="submit" value ="Borrar"></form></td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endblock %}
